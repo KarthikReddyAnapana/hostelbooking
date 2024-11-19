@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hostel Booking Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            background-color: black;
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: white !important;
+        }
+
+        .room-card {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .room-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .form-control,
+        .btn-primary {
+            border-radius: 20px;
+        }
+
+        footer {
+            background-color: #4F7942;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand btn-primary" href="#">Hostel Booking</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Rooms</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container text-center mt-5">
+
+
+        <h1 class=" animate__animated animate__tada p-4"
+            style="height: 100px; width: 1300px; background-color: rgb(47, 255, 0); display-4 text-center animate__animated animate_duration:60s;animate__fadeInDown">
+            Welcome to Our Hostel Booking</h1>
+        <p class="lead text-center animate__animated animate__fadeInUp">Make your stay at the University a memorable
+            one!</p>
+
+
+        <!-- Booking Form -->
+        <div class="container mt-4">
+            <form class="row g-3">
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Enter your name" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="col-md-4">
+                    <select class="form-select" required>
+                        <option selected disabled>Choose Room Type</option>
+                        <option value="Single">Single</option>
+                        <option value="Double">Double</option>
+                        <option value="Suite">Suite</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <input type="date" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <input type="date" class="form-control" required>
+                </div>
+                <div class="col-md-4">
+                    <button type="submit" class="btn btn-primary w-100 btn-danger">Book Now</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Rooms Section -->
+        <div class="p-3 container mt-5 bg-dark">
+            <div class=" display-6 shadow-lg p-3 mb-5 text-center fw-bold bg-body-warning bg-body-tertiary rounded">
+                Available Rooms</div>
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card room-card">
+                        <img src="/assets/1.jpg" class="card-img-top" alt="Room Image">
+                        <div class="card-body">
+                            <h5 class=" p-3 fw-bold card-title">Single Room</h5>
+                            <p class="card-text">A cozy room for one person with all basic amenities.</p>
+                            <button class="btn btn-info">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card room-card">
+                        <img src="/assets/2.jpg" class="card-img-top" alt="Room Image">
+                        <div class="card-body">
+                            <h5 class="fw-bold card-title">Double Room</h5>
+                            <p class="card-text">Spacious room for two people with a comfortable stay.</p>
+                            <button class="btn btn-warning">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card room-card">
+                        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Room Image">
+                        <div class="card-body">
+                            <h5 class="fw-bold card-title">Suite</h5>
+                            <p class="card-text">Luxurious suite with premium amenities for an unforgettable stay.</p>
+                            <button class="btn btn-success">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="mt-5">
+            <p>&copy; 2024 Hostel Booking | All Rights Reserved</p>
+        </footer>
+
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+
+        <script>
+            document.querySelector("form").addEventListener("submit", async function (e) {
+                e.preventDefault(); // Prevent the default form submission behavior
+
+                // Collect form data
+                const name = document.querySelector("input[placeholder='Enter your name']").value;
+                const email = document.querySelector("input[placeholder='Enter your email']").value;
+                const roomType = document.querySelector("select").value;
+                const checkIn = document.querySelectorAll("input[type='date']")[0].value;
+                const checkOut = document.querySelectorAll("input[type='date']")[1].value;
+
+                // Make sure roomType is valid
+                if (roomType === "Choose Room Type") {
+                    alert("Please select a valid room type.");
+                    return;
+                }
+
+                // Prepare data for the API
+                const requestData = {
+                    name,
+                    email,
+                    roomType,
+                    checkIn,
+                    checkOut
+                };
+
+                try {
+                    // Make a POST request to the backend
+                    const response = await fetch("http://localhost:5000/book-room", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(requestData)
+                    });
+
+                    // Parse the JSON response
+                    const result = await response.json();
+
+                    if (response.ok) {
+                        alert(
+                            `${result.message}\n ${result.assignedRoom}`
+                        ); // Show success message with room number
+                    } else {
+                        alert("Error: " + result.message); // Show error message
+                    }
+                } catch (error) {
+                    console.error("Error connecting to the backend:", error);
+                    alert("Failed to connect to the server. Please try again later.");
+                }
+            });
+        </script>
+</body>
+
+</html>
